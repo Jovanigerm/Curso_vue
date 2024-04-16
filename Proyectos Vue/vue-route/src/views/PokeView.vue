@@ -5,6 +5,13 @@ import { useRoute, useRouter } from 'vue-router';
 
 import { useGetData } from '@/composables/getData';
 
+import { usePokFavoritos } from '@/store/favoritos';
+
+const PokeFavoritos = usePokFavoritos();
+
+const { add, findPoke } = PokeFavoritos;
+
+
 const route = useRoute();
 const router = useRouter();
 
@@ -40,14 +47,17 @@ getData(`https:/pokeapi.co/api/v2/pokemon/${route.params.name}`);
             <label for="">Nombre:</label>
             {{ data.name }}
         </div>
-    </div>
-    <div v-else>
-        <h1>No existe el pokemon</h1>
-    </div>
-    <div>
+        <div>
         <div class="col-md-6">
+            <button :disabled="findPoke(data.name)" class="btn btn-primary" @click="add(data)">Favorito</button>
             <button @click="back">Regresar</button>
         </div>
     </div>
+    </div>
+    <div v-else>
+        <h1>No existe el pokemon</h1>
+        <button @click="back">Regresar</button>
+    </div>
+   
     <!-- {{ infoPokemon }} -->
 </template>

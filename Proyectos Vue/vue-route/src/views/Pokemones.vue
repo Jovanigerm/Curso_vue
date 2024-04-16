@@ -35,7 +35,8 @@ getData("https://pokeapi.co/api/v2/pokemon");
                     <li v-for="(pokemon, index) in data.results" :key="index"><router-link
                             :to="`/pokemones/${pokemon.name}`">{{ pokemon.name }}</router-link></li>
                 </ul>
-                <button :disabled="!data.previous" class="btn btn-danger me-2" @click="getData(data.previous)">Preview</button>
+                <button :disabled="!data.previous" class="btn btn-danger me-2"
+                    @click="getData(data.previous)">Preview</button>
                 <button :disabled="!data.next" class="btn btn-primary me-2" @click="getData(data.next)">next</button>
             </div>
             <hr>
@@ -43,7 +44,8 @@ getData("https://pokeapi.co/api/v2/pokemon");
                 <h2>Listado con componente</h2>
                 <!-- <ListPokemons :pokemons="pokemons"></ListPokemons> -->
                 <ListPokemons :pokemons="data.results"></ListPokemons>
-                <button :disabled="!data.previous" class="btn btn-danger me-2" @click="getData(data.previous)">Preview</button>
+                <button :disabled="!data.previous" class="btn btn-danger me-2"
+                    @click="getData(data.previous)">Preview</button>
                 <button :disabled="!data.next" class="btn btn-primary me-2" @click="getData(data.next)">next</button>
             </div>
         </div>
